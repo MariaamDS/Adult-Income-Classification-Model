@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import joblib
 from pathlib import Path
+from imblearn.pipeline import  Pipeline
+from sklearn.impute import  SimpleImputer
+from sklearn.preprocessing import  RobustScaler, OneHotEncoder
+from category_encoders import  BinaryEncoder
+from imblearn.over_sampling import  SMOTE
+from lightgbm import LGBMClassifier
 
 st.set_page_config(layout='wide', page_title='Income Classification App', page_icon='💰')
 
@@ -139,3 +145,4 @@ if st.button('Predict Income'):
             st.warning("💰 Prediction: **High Income (> $50k)**")
     except Exception as e:
         st.error(f"Prediction failed: {e}")
+
